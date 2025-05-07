@@ -5,7 +5,7 @@ const app = express()
 const port = 3000    
 
 app.use(express.json())
-app.get('/', middleware , (req, res) => {
+app.get('/main', middleware , (req, res) => {
   res.json(`hi ${req.email}`);
 })
 
