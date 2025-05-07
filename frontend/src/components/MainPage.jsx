@@ -20,7 +20,7 @@ function MainPage() {
   // if(!authorized){
   //   return (
   //     <div>NOT AUTHROIZED</div>
-  //   )
+  //   )d
   // }
   return(
     <div className='h-screen z-10 bg-amber-200'>
