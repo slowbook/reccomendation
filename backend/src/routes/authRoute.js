@@ -8,7 +8,7 @@ require('dotenv').config();
 const authRouter = express.Router() ;
 
 authRouter.post('/signup',async (req,res)=>{
-    const data= req.body;
+    const data = req.body;
     const user=await prisma.user.findUnique({
         where:{
             email:data.email
@@ -23,13 +23,11 @@ authRouter.post('/signup',async (req,res)=>{
                 password: hashedPassword
             }
         })  
-        console.log(token , newUser.email)
-        const token=sendToken(newUser.email);
+        const token= sendToken(newUser.email) ;
         res.json({message:`Welcome ${data.name}` , token : token})
     }else{
         res.json({message:'User already Exists'})
     }
-
 })
 
 authRouter.post('/login',async (req,res)=>{
@@ -44,7 +42,6 @@ authRouter.post('/login',async (req,res)=>{
         const isPasswordValid = await bcrypt.compare(data.password , existingUser.password) ;
         if(isPasswordValid){
             const token=sendToken(existingUser.email);
-            console.log(token , existingUser.email);
             res.json({token})
         }
         else {
