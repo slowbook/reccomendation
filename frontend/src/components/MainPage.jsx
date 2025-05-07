@@ -27,6 +27,9 @@ function MainPage() {
       <div className='flex justify-center h-screen'>
 <div className='flex items-center'>
 
+
+
+
 <SearchBar/>
 </div>
 
