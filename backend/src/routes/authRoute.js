@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient() ;
+const passport=require('passport')
 require('dotenv').config();
 
 const authRouter = express.Router() ;
@@ -59,6 +60,17 @@ function sendToken(email){
     },process.env.JWT_SECRET);
     return token;
 }
+authRouter.get("/google",passport.authenticate("google",{scope:["profile","email"]}))
+
+authRouter.get("/callback",passport.authenticate("google",{failureRedirect:"/login"}),
+(req,res)=>{
+    const token=sendToken(req.user.email);
+    const fronend=process.env.frontend
+    res.redirect(`${fronend}/oauth/callback?token=$${encodeURIComponent(token)}`)
+}
+
+);
+
 
 
 

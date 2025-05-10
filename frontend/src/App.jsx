@@ -1,11 +1,12 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
-import Dashboard from './components/dashboard';
+import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Signup from './components/SignUp';
 import MainPage from './components/MainPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import TestComponent from './components/TestComponent';
+import OAuthCallback from './components/OAuthCallback';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='/' element={<Dashboard />} />
           <Route path='/login' element={<Login/>} />
           <Route path='/signup' element={<Signup/>} />
+          <Route path="/oauth/callback" element={<OAuthCallback />} />
           
           <Route element={<ProtectedRoute />}>
             <Route path='/main' element={<MainPage/>} />

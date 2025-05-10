@@ -24,6 +24,13 @@ export default function Login() {
           console.error('Login failed:', err);
         }
       };
+      const loginGoogleFunction= async (email,pass)=>{
+        try {
+            window.location.href="http://localhost:3000/auth/google"
+          } catch (err) {
+            console.error('Login failed:', err);
+          }
+        };
       
 
   return (
@@ -42,6 +49,7 @@ export default function Login() {
         </div>
         <div className='flex justify-center cursor-pointer'>
           <button onClick={()=>loginFunction(email,pass)}className='border-3 border-red-400 cursor-pointer flex justify-center'>Login</button>
+          <button onClick={()=>loginGoogleFunction(email,pass)}className='border-3 border-red-400 cursor-pointer flex justify-center'>Google</button>
         </div>
         
 
